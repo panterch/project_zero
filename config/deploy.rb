@@ -23,6 +23,14 @@ after "deploy:update_code", :update_config_links
 namespace :deploy do
   desc "Restart Application"
   task :restart, :roles => :app do
+    bundler.bundle_install
     run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+namespace :bundler do
+  desc "install bundle gems"
+  task :bundle_install, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path}; bundle install --without development test --deployment"
   end
 end
