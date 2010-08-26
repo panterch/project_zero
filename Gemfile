@@ -16,7 +16,7 @@ group :development, :test do
   gem 'webrat'
   gem 'shoulda'
   gem 'factory_girl_rails'
-#  gem 'capistrano'
-#  gem 'capistrano-ext'
+  gem 'capistrano'
+  gem 'capistrano-ext'
   gem 'ruby-debug'
 end
