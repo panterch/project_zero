@@ -1,0 +1,20 @@
+!!!
+
+%html
+  %head
+    %title Application Title
+    = stylesheet_link_tag 'blueprint/screen'
+    = stylesheet_link_tag 'blueprint/print', :media => 'print'
+    = javascript_include_tag :defaults 
+    = stylesheet_link_tag 'blueprint/ie', :condition => "lt IE 8"
+    = csrf_meta_tag 
+  %body
+    .container
+      .span-24.last
+        Header
+      .span-4
+        Left sidebar
+      .span-16
+        = yield 
+      .span-4.last
+        Right sidebar
