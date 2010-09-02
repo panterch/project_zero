@@ -9,6 +9,7 @@ Comes capified and tested with:
 
 == Todo
 
+* jquery
 * Shoulda
 * Factory Girl
 * Auth Logic
