@@ -19,4 +19,5 @@ webrat*html
 mkmf.log
 public/javascripts/all.js
 public/stylesheets/all.css
-
+doc
+.yardoc

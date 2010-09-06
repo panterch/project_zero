@@ -6,9 +6,6 @@ Comes capified and tested with:
 * Haml
 * Blueprint CSS
 * sqlite3
-
-== Todo
-
 * jquery
 * Shoulda
 * Factory Girl

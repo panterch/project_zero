@@ -15,6 +15,7 @@ gem 'haml', '3.0.18'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'yard'
   gem 'webrat'
   gem 'shoulda'
   gem 'factory_girl_rails'
