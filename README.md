@@ -14,6 +14,6 @@ Comes capified and tested with:
 
 ## How to hit the ground running
 
-$ bundle install
-$ ln -s database.yml.sqlite3 config/database.yml
+    $ bundle install
+    $ ln -s database.yml.sqlite3 config/database.yml
 
