@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: project_zero
+  encoding: UTF8
+  username: <your-username-goes-here>
+  password:
