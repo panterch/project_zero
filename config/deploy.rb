@@ -2,16 +2,16 @@ require 'bundler/capistrano'
 
 set :application, "project_zero"
 
-role :app, "192.168.17.32"
-role :web, "192.168.17.32"
-role :db,  "192.168.17.32", :primary => true
+role :app, "test.panter.ch"
+role :web, "test.panter.ch"
+role :db,  "test.panter.ch", :primary => true
 set :rails_env, 'production'
 
 set :deploy_via, :remote_cache
 set :git_enable_submodules, 1
 set :scm, :git
 set :default_run_options, { :pty => true }
-set :repository, "git@cat.panter.ch:project_zero.git"
+set :repository, "git@github.com:panter/project_zero.git"
 set :ssh_options, {:forward_agent => true}
 set :deploy_to, "/home/rails/app"
 set :user, "rails"

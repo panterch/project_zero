@@ -6,7 +6,8 @@ require 'rake'
 
 ProjectZero::Application.load_tasks
 
-YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb', 'app/**/*.rb' ]
+if defined?(YARD)
+  YARD::Rake::YardocTask.new do |t|
+    t.files   = ['lib/**/*.rb', 'app/**/*.rb' ]
+  end
 end
-
