@@ -14,6 +14,12 @@ Comes capified and tested with:
 
 ## How to hit the ground running
 
-    $ bundle install
-    $ ln -s database.yml.sqlite3 config/database.yml
+PROJECT=<handle>
+git clone git://github.com/panter/project_zero.git $PROJECT
+cd $PROJECT
+git remote rm origin    
+git remote add origin gitosis@git.panter.ch:$PROJECT
+git push origin master
+bundle install
+ln -s database.yml.sqlite3 config/database.yml
 
