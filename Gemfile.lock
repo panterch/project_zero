@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/odorcicd/authlogic.git
-  revision: a087ad0cba3c165ba22fcf176c28b6f7517931e8
-  branch: rails3
-  specs:
-    authlogic (2.1.3)
-      activesupport
-
-GIT
   remote: http://github.com/rails/exception_notification.git
   revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   specs:
@@ -43,6 +35,8 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.7)
+    authlogic (2.1.6)
+      activesupport
     builder (2.1.2)
     capistrano (2.5.19)
       highline
@@ -126,7 +120,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authlogic!
+  authlogic (= 2.1.6)
   capistrano
   capistrano-ext
   exception_notification!
