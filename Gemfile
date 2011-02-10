@@ -10,6 +10,8 @@ gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => '
 gem 'formtastic', '1.1.0.beta'
 gem 'haml', '3.0.18'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :require => 'exception_notifier'
+gem 'inherited_resources', '1.2.1'
+
 
 # gem "will_paginate", "~> 3.0.pre2"
 # gem "paperclip", "~> 2.3"

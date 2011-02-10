@@ -4,7 +4,7 @@
 de:
   login: "Anmelden"
   register: "Registrieren"
-  current_user: "Angemeldet als {{username}}"
+  current_user: "Angemeldet als %{username}"
   logout: "Abmelden"
 
   home:

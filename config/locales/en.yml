@@ -4,7 +4,7 @@
 en:
   login: "Login"
   register: "Register"
-  current_user: "Logged in as {{username}}"
+  current_user: "Logged in as %{username}"
   logout: "Logout"
 
   home:

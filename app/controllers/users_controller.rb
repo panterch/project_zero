@@ -1,5 +1,7 @@
-class UsersController < ApplicationController
-  resource_controller
+class UsersController < InheritedResources::Base 
 
-  create.wants.html { redirect_to root_url }
+  def create
+    create!{ root_url }
+  end
+
 end
