@@ -10,6 +10,7 @@ Comes capified and tested with:
  * Shoulda
  * Factory Girl
  * Auth Logic
+ * inherited_resources
  * yardoc
 
 ## How to hit the ground running
