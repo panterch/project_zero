@@ -5,9 +5,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # gem 'authlogic', '>=2.1.6'
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
-# gem 'formtastic-rails3'
+gem 'formtastic', '1.2.3'
 # gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
-gem 'formtastic', '1.1.0.beta'
+# gem 'formtastic', '1.1.0.beta'
 gem 'haml', '3.0.18'
 gem "exception_notification", :git => "http://github.com/rails/exception_notification.git", :require => 'exception_notifier'
 gem 'inherited_resources', '1.2.1'

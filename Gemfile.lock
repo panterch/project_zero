@@ -59,10 +59,10 @@ GEM
     factory_girl_rails (1.0)
       factory_girl (~> 1.3)
       rails (>= 3.0.0.beta4)
-    formtastic (1.1.0.beta)
-      actionpack (>= 2.3.0)
-      activesupport (>= 2.3.0)
-      i18n (>= 0.4.0)
+    formtastic (1.2.3)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (~> 0.4)
     haml (3.0.18)
     has_scope (0.5.0)
     highline (1.6.1)
@@ -131,7 +131,7 @@ DEPENDENCIES
   capistrano-ext
   exception_notification!
   factory_girl_rails
-  formtastic (= 1.1.0.beta)
+  formtastic (= 1.2.3)
   haml (= 3.0.18)
   inherited_resources (= 1.2.1)
   rails (= 3.0.3)
