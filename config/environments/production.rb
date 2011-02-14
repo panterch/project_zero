@@ -1,4 +1,4 @@
-ProjectZeroDevise::Application.configure do
+ProjectZero::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -46,4 +46,9 @@ ProjectZeroDevise::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.middleware.use ExceptionNotifier,
+      :email_prefix => "[ProjectZero] ",
+      :sender_address => %{"notifier" <panter@mailantor.com>},
+      :exception_recipients => %w(panter@mailinator.com)
 end

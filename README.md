@@ -1,11 +1,12 @@
 ## Rails project to kickstart development
 
-Comes capified and tested with:
+Comes with:
 
  * Rails 3
  * Haml
- * Rspec, Factory Girl, Steak and Spork
  * inherited_resources
+ * exception_notifier
+ * Rspec, Factory Girl, Steak and Spork
 
 ## How to hit the ground running
 

@@ -16,7 +16,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  ProjectZeroDevise::Application.reload_routes!
+  ProjectZero::Application.reload_routes!
 end
 
 Spork.each_run do
