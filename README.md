@@ -3,6 +3,7 @@
 Comes with:
 
  * Rails 3
+ * jQuery
  * Haml
  * inherited_resources
  * exception_notifier
