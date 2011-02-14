@@ -1,4 +1,2 @@
-%ul
-  %li= @post.id
-  %li= @post.title
-  %li= @post.body
+= link_to 'Overview', collection_path
+= render :partial => 'post', :object => resource
