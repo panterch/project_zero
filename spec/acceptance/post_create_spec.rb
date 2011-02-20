@@ -6,22 +6,26 @@ feature "Posts Page", %q{
 } do
 
   scenario "should create new post" do
+    post = Factory.build(:post)
     visit '/posts/new'
 
-    fill_in 'post_title', :with => 'John'
-    fill_in 'post_body', :with => 'Doe'
+    fill_in 'post_title', :with => post.title
+    fill_in 'post_body', :with => post.body
     click_button 'Create Post'
 
     current_path.should match %r{/posts/\d+}
-    page.should have_content("John")
-    page.should have_content("Doe")
+    page.should have_content(post.title) if post.title
+    page.should have_content(post.body) if post.body
   end
 
   scenario "should show post index" do
-    Post.create!(:title => "John", :body => "Doe")
+    attributes = Factory.attributes_for(:post)
+    Post.create!(attributes)
 
     visit posts_url
-    page.should have_content("John")
-    page.should have_content("Doe")
+    values = attributes.collect{|k,v| v}
+    values.each do |value|
+      page.should have_content(value)
+    end
   end
 end
