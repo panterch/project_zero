@@ -21,8 +21,7 @@ FS_NAME=projectone
 git clone git@github.com:panter/project_zero.git $FS_NAME
 
 # remove git history
-cd $FS_NAME
-rm -rf .git
+rem -rf $FS_NAME/.git
 
 # setup rvm
 echo "rvm ruby-1.8.7@$FS_NAME" > $FS_NAME/.rvmrc
