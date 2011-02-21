@@ -20,6 +20,10 @@ FS_NAME=projectone
 # checkout project zero into a new folder
 git clone git@github.com:panter/project_zero.git $FS_NAME
 
+# remove git history
+cd $FS_NAME
+rm -rf .git
+
 # setup rvm
 echo "rvm ruby-1.8.7@$FS_NAME" > $FS_NAME/.rvmrc
 cd $FS_NAME
@@ -32,6 +36,9 @@ perl -p -i -e "s/ProjectZero/$RAILS_NAME/" *
 perl -p -i -e "s/ProjectZero/$RAILS_NAME/" spec/*
 
 # push the project into a new location
+git init
+git add .
+git commit -am"adapted from https://github.com/panter/project_zero"
 git remote add origin gitosis@git.yourdomain.com:$FS_NAME.git
 git push origin master:refs/heads/master
 </pre>
