@@ -21,7 +21,7 @@ FS_NAME=projectone
 git clone git@github.com:panter/project_zero.git $FS_NAME
 
 # remove git history
-rem -rf $FS_NAME/.git
+rm -rf $FS_NAME/.git
 
 # setup rvm
 echo "rvm ruby-1.8.7@$FS_NAME" > $FS_NAME/.rvmrc
@@ -33,6 +33,9 @@ perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/initializers/*
 perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/environments/*
 perl -p -i -e "s/ProjectZero/$RAILS_NAME/" *
 perl -p -i -e "s/ProjectZero/$RAILS_NAME/" spec/*
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" app/views/layouts/*
+perl -p -i -e "s/project_zero/$FS_NAME/" config/initializers/*
+
 
 # push the project into a new location
 git init
