@@ -1,15 +1,13 @@
 require 'spec_helper'
 include InheritedResourceHelpers
 
-describe "posts/new.html.haml" do
-  before do
+describe "posts/index.html.haml" do
+
+  it "should render" do
     @post = Factory.build(:post)
     mock_inherited_resource(@post)
     render
-  end
-
-  it "displays the text attribute of the post" do
-    rendered.should =~ /#{@post.title}/
+    rendered.should =~ /new_resource_path/
   end
 
 end
