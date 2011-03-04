@@ -25,4 +25,8 @@ group :development, :test do
   if RUBY_PLATFORM =~ /-*darwin.*/
     gem 'growl'
   end
+  if RUBY_PLATFORM =~ /-*linux.*/
+    gem 'libnotify'
+  end
+
 end
