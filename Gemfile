@@ -21,4 +21,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'factory_girl_rails'
+
+  if RUBY_PLATFORM =~ /-*darwin.*/
+    gem 'growl'
+  end
 end
