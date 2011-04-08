@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.6'
 
 # gems in alphabetic order
 gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
