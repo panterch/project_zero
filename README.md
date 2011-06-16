@@ -24,7 +24,7 @@ git clone git@github.com:panter/project_zero.git $FS_NAME
 rm -rf $FS_NAME/.git
 
 # setup rvm
-echo "rvm ruby-1.8.7@$FS_NAME" > $FS_NAME/.rvmrc
+echo "rvm ruby-1.8.7-p72@$FS_NAME" > $FS_NAME/.rvmrc
 cd $FS_NAME
 
 # run some search replace on project name
