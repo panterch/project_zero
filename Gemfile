@@ -14,9 +14,8 @@ gem 'inherited_resources', '1.2.1'
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'yard'
-  gem 'rspec-rails'
-  gem 'steak'
-  gem 'capybara'
+  gem 'rspec-rails', '2.6.0'
+  gem 'capybara', '1.0.0'
   gem 'spork', "0.9.0.rc3"
   gem 'guard-rspec'
   gem 'guard-spork'

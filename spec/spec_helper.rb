@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+require 'capybara/rspec'
 
 ENV["RAILS_ENV"] ||= 'test'
 
@@ -24,7 +25,6 @@ Spork.each_run do
   Factory.factories.clear
   load 'spec/factories.rb'
 end
-
 
 RSpec.configure do |config|
   # == Mock Framework
