@@ -7,7 +7,7 @@ Comes with:
  * Haml
  * inherited_resources
  * exception_notifier
- * Rspec, Factory Girl, Steak and Spork
+ * Rspec, Factory Girl, Capybara and Spork
 
 ## How to hit the ground running
 
