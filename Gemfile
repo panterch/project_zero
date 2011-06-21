@@ -20,7 +20,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'factory_girl_rails'
-
 #  Below an ideaf how to enable operating system dependant gems.
 #  Sadly it does cause errors on deployment.
 #  if RUBY_PLATFORM =~ /-*darwin.*/
@@ -29,5 +28,8 @@ group :development, :test do
 #  if RUBY_PLATFORM =~ /-*linux.*/
 #    gem 'libnotify'
 #  end
+end
 
+group :production do
+    gem 'pg'
 end
