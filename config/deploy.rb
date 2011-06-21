@@ -11,6 +11,7 @@ set :deploy_via, :remote_cache
 set :scm, :git
 set :default_run_options, { :pty => true }
 set :repository, "git@github.com:panter/project_zero.git"
+set :branch, "ruby1.9"
 set :ssh_options, {:forward_agent => true}
 set :deploy_to, "/home/rails/app"
 set :user, "rails"

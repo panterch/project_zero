@@ -73,6 +73,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     nokogiri (1.4.5)
+    pg (0.11.0)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -137,6 +138,7 @@ DEPENDENCIES
   guard-spork
   haml (= 3.0.25)
   inherited_resources (= 1.2.1)
+  pg
   rails (= 3.0.7)
   rspec-rails (= 2.6.0)
   spork (= 0.9.0.rc3)
