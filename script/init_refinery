@@ -2,6 +2,10 @@
 # define a rails application name and a folder name where you want to
 # checkout your project
 
+RUBYVERSION=ruby-1.8.7-p72
+
+Rc=0
+
 # change to the correct directory
 cd "$(dirname $0)/.."
 
@@ -24,10 +28,14 @@ fi
 rm -rf .git
 
 # Set the correct gemset and use it
-echo "rvm ruby-1.8.7@$FS_NAME" > .rvmrc
+echo "rvm $RUBYVERSION@$FS_NAME" > .rvmrc
 rvm gemset create "$FS_NAME"
+let Rc=$Rc+$?
 
-. rvm "ruby-1.8.7@$FS_NAME"
+. rvm "$RUBYVERSION@$FS_NAME"
+let Rc=$Rc+$?
+
+[ "$Rc" == "0" ] || exit $Rc
 
 # run some search replace on project name
 perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/*
@@ -39,15 +47,43 @@ perl -p -i -e "s/ProjectZero/$RAILS_NAME/" app/views/layouts/*
 perl -p -i -e "s/project_zero/$FS_NAME/" config/initializers/*
 
 # Extend Gemfile by refinery
-echo "gem 'refinerycms', '>=0.9.9.17', :git=>'git://github.com/koa/refinerycms.git'" >>Gemfile
+echo "gem 'refinerycms'" >>Gemfile
+
+# This dependencies needs to be updated for working with new Refinery
+for i in rails formtastic haml rspec-rails
+do
+  sed "s/\(gem .$i.\).*/\\1/" <Gemfile >Gemfile.new
+  mv Gemfile.new Gemfile
+done
+rm Gemfile.lock
 
 # Activate sqlite3 local
 ln -s database.sqlite3.yml config/database.yml
+let Rc=$Rc+$?
+
 gem install bundler
+
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
 bundle
+
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
+# Use Layout from Refinery
+rm app/views/layouts/application.html.haml
+
+# Patch tests
+patch -p1 <"script/Patch_projectzero_for_working_with_refinerycms.patch"
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
 
 # Generate refinerycms files
 rails generate refinerycms
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
 # remove some generated files
 rm config/database.yml.*
 # Store .rvmrc in git
@@ -57,9 +93,12 @@ mv .gitignore.new .gitignore
 grep -v root config/routes.rb >routes.rb
 mv routes.rb config/
 rake db:migrate
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
 
 # commit suizide
 rm script/$(basename $0)
+rm script/*.patch
 
 # Initialize new Repository
 git init

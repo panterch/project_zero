@@ -1,0 +1,58 @@
+diff --git a/spec/controllers/posts_controller_spec.rb b/spec/controllers/posts_controller_spec.rb
+index ddb8052..e3ac40c 100644
+--- a/spec/controllers/posts_controller_spec.rb
++++ b/spec/controllers/posts_controller_spec.rb
+@@ -1,6 +1,8 @@
+ require 'spec_helper'
+ 
+ describe PostsController do
++  include Devise::TestHelpers
++  before(:each){Factory.create(:refinery_user)}
+ 
+   context 'GET on new' do
+     before(:each) { get :new }
+diff --git a/spec/factories.rb b/spec/factories.rb
+index 7c76567..5bbc33f 100644
+--- a/spec/factories.rb
++++ b/spec/factories.rb
+@@ -1,3 +1,20 @@
+ Factory.define :post do |f|
+   f.title 'Post title'
+ end
++
++Factory.define :user do |u|
++  u.sequence(:username) { |n| "person#{n}" }
++  u.sequence(:email) { |n| "person#{n}@example.com" }
++  u.password  "greenandjuicy"
++  u.password_confirmation "greenandjuicy"
++end
++
++Factory.define :refinery_user, :parent => :user do |u|
++  u.roles { [ Role[:refinery] ] }
++
++  u.after_create do |user|
++    Refinery::Plugins.registered.each_with_index do |plugin, index|
++      user.plugins.create(:name => plugin.name, :position => index)
++    end
++  end
++end
+diff --git a/spec/requests/post_create_spec.rb b/spec/requests/post_create_spec.rb
+index 3d741b6..06c4c04 100644
+--- a/spec/requests/post_create_spec.rb
++++ b/spec/requests/post_create_spec.rb
+@@ -6,6 +6,7 @@ feature "Posts Page", %q{
+ } do
+ 
+   scenario "should create new post" do
++    Factory.create(:refinery_user)
+     post = Factory.build(:post)
+     visit '/posts/new'
+ 
+@@ -19,6 +20,7 @@ feature "Posts Page", %q{
+   end
+ 
+   scenario "should show post index" do
++    Factory.create(:refinery_user)
+     attributes = Factory.attributes_for(:post)
+     Post.create!(attributes)
+ 
