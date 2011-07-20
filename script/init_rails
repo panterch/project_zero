@@ -1,0 +1,133 @@
+#!/bin/bash
+# define a rails application name and a folder name where you want to
+# checkout your project
+
+RUBYVERSION=ruby-1.8.7-p72
+
+Rc=0
+
+scriptname="$(basename "$0")"
+
+echo "Script : $scriptname"
+echo "-------------------"
+
+# change to the correct directory
+cd "$(dirname $0)/.."
+
+if [ "_$1" == "_" ] ; then
+  echo "Makes a Refinery-Project from this Project"
+  echo "Usage: $0 RAILS_NAME"
+  exit 0
+fi
+
+RAILS_NAME=$1
+FS_NAME="$(basename $(pwd))"
+
+if [ "$FS_NAME" == "project_zero" ] ; then
+  echo "It is not allowed to call this script in ProjectZero"
+  echo "Rename the Directory to the Name of your Project and restart this script"
+  exit 1
+fi
+
+# remove git history
+rm -rf .git
+
+# Set the correct gemset and use it
+echo "rvm $RUBYVERSION@$FS_NAME" > .rvmrc
+rvm gemset create "$FS_NAME"
+let Rc=$Rc+$?
+
+. rvm "$RUBYVERSION@$FS_NAME"
+let Rc=$Rc+$?
+
+[ "$Rc" == "0" ] || exit $Rc
+
+# run some search replace on project name
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/*
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/initializers/*
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/environments/*
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" *
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" spec/*
+perl -p -i -e "s/ProjectZero/$RAILS_NAME/" app/views/layouts/*
+perl -p -i -e "s/project_zero/$FS_NAME/" config/initializers/*
+
+if [ "$scriptname" == "init_refinery" ]; then
+  # Extend Gemfile by refinery
+  echo "gem 'refinerycms'" >>Gemfile
+
+  # This dependencies needs to be updated for working with new Refinery
+  for i in rails formtastic haml rspec-rails
+  do
+    sed "s/\(gem .$i.\).*/\\1/" <Gemfile >Gemfile.new
+    mv Gemfile.new Gemfile
+  done
+  rm Gemfile.lock
+  # Use Layout from Refinery
+  rm app/views/layouts/application.html.haml
+
+  # Patch tests
+  patch -p1 <"script/Patch_projectzero_for_working_with_refinerycms.patch"
+  let Rc=$Rc+$?
+  [ "$Rc" == "0" ] || exit $Rc
+fi
+
+# Activate sqlite3 local
+ln -s database.sqlite3.yml config/database.yml
+let Rc=$Rc+$?
+
+gem install bundler
+
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
+bundle
+
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
+if [ "$scriptname" == "init_refinery" ]; then
+
+  # Generate refinerycms files
+  rails generate refinerycms
+  let Rc=$Rc+$?
+  [ "$Rc" == "0" ] || exit $Rc
+
+  # remove some generated files
+  rm config/database.yml.*
+  # Store .rvmrc in git
+  grep -v rvm .gitignore >.gitignore.new
+  mv .gitignore.new .gitignore
+  # remove root route
+  grep -v root config/routes.rb >routes.rb
+  mv routes.rb config/
+
+fi
+
+bundle exec rake db:migrate
+let Rc=$Rc+$?
+[ "$Rc" == "0" ] || exit $Rc
+
+# commit suizide
+rm script/init_*
+rm script/*.patch
+
+# Initialize new Repository
+git init
+git add .
+if [ "$scriptname" == "init_refinery" ]; then
+  git commit -am"adapted from https://github.com/panter/project_zero and added refinerycms"
+else
+  git commit -am"adapted from https://github.com/panter/project_zero"
+fi
+
+echo
+echo "Now Start the Application with "
+echo
+echo "cd $(pwd)"
+echo "rails s"
+echo
+if [ "$scriptname" == "init_refinery" ]; then
+  echo "and point your Browser to http://localhost:3000/ to Test your new CMS-Site"
+else
+  echo "and point your Browser to http://localhost:3000/ to Test your new Rails app"
+fi
