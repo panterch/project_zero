@@ -9,7 +9,7 @@ Comes with:
  * exception_notifier
  * Rspec, Factory Girl, Capybara and Spork
 
-## How to hit the ground running
+## How to hit the ground running a pure rails app
 
 <pre>
 # define a rails application name and a folder name where you want to 
@@ -20,31 +20,24 @@ FS_NAME=projectone
 # checkout project zero into a new folder
 git clone git@github.com:panter/project_zero.git $FS_NAME
 
-# remove git history
-rm -rf $FS_NAME/.git
-
-# setup rvm
-echo "rvm ruby-1.8.7-p72@$FS_NAME" > $FS_NAME/.rvmrc
 cd $FS_NAME
-
-# run some search replace on project name
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/*
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/initializers/*
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" config/environments/*
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" *
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" spec/*
-perl -p -i -e "s/ProjectZero/$RAILS_NAME/" app/views/layouts/*
-perl -p -i -e "s/project_zero/$FS_NAME/" config/initializers/*
-
-
-# push the project into a new location
-git init
-git add .
-git commit -am"adapted from https://github.com/panter/project_zero"
-git remote add origin gitosis@git.yourdomain.com:$FS_NAME.git
-git push origin master:refs/heads/master
+script/init_rails $RAILS_NAME
 </pre>
 
+## How to initialize a refinery app
+
+<pre>
+# define a rails application name and a folder name where you want to
+# checkout your project
+RAILS_NAME=ProjectOne
+FS_NAME=projectone
+
+# checkout project zero into a new folder
+git clone git@github.com:panter/project_zero.git $FS_NAME
+
+cd $FS_NAME
+script/init_refinery $RAILS_NAME
+</pre>
 
 ## See the branches
 
