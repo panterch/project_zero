@@ -1,12 +1,21 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.1.0'
 
 # gems in alphabetic order
-gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
-gem 'formtastic', '1.2.3'
-gem 'haml', '3.0.25'
-gem 'inherited_resources', '1.2.1'
+gem 'exception_notification_rails3', '~>1.2.0', :require => 'exception_notifier'
+gem 'formtastic', '~>1.2.4'
+gem 'haml', '~>3.1.2'
+gem 'inherited_resources', '~>1.3.0'
+gem 'rake', '~>0.9.2'
+
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -14,9 +23,9 @@ gem 'inherited_resources', '1.2.1'
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'yard'
-  gem 'rspec-rails', '2.6.0'
-  gem 'capybara', '1.0.0'
-  gem 'spork', "0.9.0.rc3"
+  gem 'rspec-rails', '~>2.6.1'
+  gem 'capybara', '~>1.1.1'
+  gem 'spork', "0.9.0.rc9"
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'factory_girl_rails'
@@ -31,3 +40,5 @@ group :development, :test do
 #  end
 
 end
+
+gem 'therubyracer'
