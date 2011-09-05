@@ -3,15 +3,15 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
 # gems in alphabetic order
-gem 'exception_notification_rails3', '~>1.2.0', :require => 'exception_notifier'
-gem 'formtastic', '~>1.2.4'
-gem 'haml', '~>3.1.2'
-gem 'inherited_resources', '~>1.3.0'
-gem 'rake', '~>0.9.2'
+gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
+gem 'formtastic', '1.2.4'
+gem 'haml', '3.1.2'
+gem 'inherited_resources', '1.3.0'
+gem 'rake', '0.9.2'
 
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails', "3.1.0"
+  gem 'coffee-rails', "3.1.0"
   gem 'uglifier'
 end
 
@@ -23,8 +23,8 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'yard'
-  gem 'rspec-rails', '~>2.6.1'
-  gem 'capybara', '~>1.1.1'
+  gem 'rspec-rails', '2.6.1'
+  gem 'capybara', '1.1.1'
   gem 'spork', "0.9.0.rc9"
   gem 'guard-rspec'
   gem 'guard-spork'
@@ -40,5 +40,3 @@ group :development, :test do
 #  end
 
 end
-
-gem 'therubyracer'
