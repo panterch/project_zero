@@ -15,4 +15,6 @@
         = content_tag :div, msg, :id => "flash_#{name}"
       = yield
     #footer
+      = "Rails #{Rails.version}, ruby #{RUBY_VERSION} p#{RUBY_PATCHLEVEL} [#{RUBY_PLATFORM}]"
+      
 

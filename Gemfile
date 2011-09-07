@@ -32,14 +32,8 @@ group :development, :test do
   gem 'guard-spork'
   gem 'factory_girl_rails'
   gem 'capistrano', '2.8.0'
+end
 
-#  Below an ideaf how to enable operating system dependant gems.
-#  Sadly it does cause errors on deployment.
-#  if RUBY_PLATFORM =~ /-*darwin.*/
-#    gem 'growl'
-#  end
-#  if RUBY_PLATFORM =~ /-*linux.*/
-#    gem 'libnotify'
-#  end
-
+group :production do
+  gem 'pg', '0.11.0'
 end
