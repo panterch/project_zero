@@ -18,7 +18,7 @@ a {
   overflow: hidden;
 }
 
-#container {
+#content, #footer {
   width: 75%;
   margin: 0 auto;
   background-color: #FFF;
@@ -72,5 +72,12 @@ a {
 
 .error_messages ul {
   margin: 0;
+}
+
+#footer {
+  background-image: image-url("logo.png");
+  background-repeat:no-repeat;
+  background-position: 98% center;
+  height: 20px;
 }
 
