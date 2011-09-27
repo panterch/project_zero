@@ -19,8 +19,9 @@ set :use_sudo, false
 
 task :update_config_links, :roles => [:app] do
   run "ln -sf #{shared_path}/config/* #{release_path}/config/"
+  run "ln -sf #{shared_path}/bundle #{release_path}/vendor/"
 end
-after "deploy:update_code", :update_config_links
+before 'deploy:assets:precompile', :update_config_links
 
 namespace :deploy do
   task :start do ; end
