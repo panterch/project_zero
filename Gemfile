@@ -1,19 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # Rails 3.1 - Asset Pipeline
-gem 'json', '1.5.4'
-gem 'haml', '3.1.2'
-gem 'sass-rails', '3.1.0'
+gem 'json', '1.6.1'
+gem 'haml', '3.1.3'
+gem 'sass-rails', '3.1.4'
 gem 'coffee-script', '2.2.0'
-gem 'uglifier', '1.0.2'
-gem 'therubyracer', '0.9.4'
+gem 'uglifier', '1.0.3'
+gem 'therubyracer', '0.9.8'
 
 # gems in alphabetic order
 gem 'exception_notification_rails3', '1.2.0', :require => 'exception_notifier'
 gem 'formtastic', '1.2.4'
-gem 'haml', '3.1.2'
 gem 'jquery-rails', '1.0.13'
 gem 'inherited_resources', '1.3.0'
 gem 'rake', '0.9.2'
