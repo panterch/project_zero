@@ -27,5 +27,10 @@ ProjectZero::Application.configure do
 
   # Exapnds the lines which load the assets
   config.assets.debug = true
+
+  # In Rails 3.2, this will override logging asset deliver messages
+  # TODO: Until we use Rails 3.2, we're using the workaround in
+  # config/initializers/quiet_assets.rb
+  config.assets.logger = nil
 end
 
