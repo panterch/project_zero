@@ -28,9 +28,13 @@ ProjectZero::Application.configure do
   # Exapnds the lines which load the assets
   config.assets.debug = true
 
-  # In Rails 3.2, this will override logging asset deliver messages
-  # TODO: Until we use Rails 3.2, we're using the workaround in
-  # config/initializers/quiet_assets.rb
-  config.assets.logger = nil
-end
+  # Override logging asset deliver messages
+  config.assets.logger = false
 
+  # Raise exception on mass assignment protection for Active Record models
+  config.active_record.mass_assignment_sanitizer = :strict
+
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
+end

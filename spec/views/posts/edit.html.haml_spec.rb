@@ -5,7 +5,7 @@ describe "posts/edit.html.haml" do
   before(:each) do
     @post = Factory(:post)
     mock_inherited_resource(@post)
-    render
+    render :template => "posts/edit"
   end
 
   it "displays the text attribute of the post" do

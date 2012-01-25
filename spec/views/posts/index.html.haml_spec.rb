@@ -6,7 +6,7 @@ describe "posts/index.html.haml" do
   it "should render" do
     @post = Factory.build(:post)
     mock_inherited_resource(@post)
-    render
+    render :template => "posts/index"
     rendered.should =~ /new_resource_path/
   end
 
