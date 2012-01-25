@@ -29,6 +29,9 @@ ProjectZero::Application.configure do
   config.assets.debug = true
 
   # Override logging asset deliver messages
+  # Note: this only suppresses the delivery messages - the GET will still be
+  # shown. For this there is no flag, but a workaround in
+  # config/initializers/quiet_assets.rb
   config.assets.logger = false
 
   # Raise exception on mass assignment protection for Active Record models
