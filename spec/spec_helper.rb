@@ -2,7 +2,7 @@ require 'rubygems'
 require 'spork'
 require 'capybara/rspec'
 
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] = 'test'
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However, 
