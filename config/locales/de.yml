@@ -1,0 +1,12 @@
+de:
+  flash:
+    actions:
+      create:
+        notice: "Erfolgreich erstellt"
+        alert: "Konnte nicht erstellt werden"
+      update:
+        notice: "Erfolgreich aktualisiert"
+        alert: "Konnte nicht aktualisiert werden"
+      destroy:
+        notice: "Erfolgreich gelöscht"
+        alert: "Konnte nicht gelöscht werden"
