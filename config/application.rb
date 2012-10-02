@@ -57,6 +57,15 @@ module ProjectZero
     # accessible parameters by using an attr_accessible or attr_protected
     # declaration.
     config.active_record.whitelist_attributes = true
+
+    # Set default generators
+    config.generators do |g|
+        g.template_engine :haml
+        g.test_framework  :rspec, :fixture => false
+        g.view_specs      false
+        g.helper_specs    false
+        g.fixture_replacement "factory_girl", :dir => "spec/factories"
+    end
   end
 end
 
