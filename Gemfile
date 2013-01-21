@@ -30,15 +30,16 @@ gem 'inherited_resources', '1.3.0'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'yard'
-  gem 'rspec-rails', '2.8.1'
+  gem 'capistrano', '2.8.0'
   gem 'capybara', '1.1.1'
-  gem 'spork', "0.9.0.rc9"
+  gem 'factory_girl_rails', '1.7.0' # which depends on fg ~>2.6.0, which will use 2.6.5
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'factory_girl_rails', '1.7.0' # which depends on fg ~>2.6.0, which will use 2.6.5
-  gem 'capistrano', '2.8.0'
+  gem 'haml-rails'
+  gem 'rspec-rails', '2.8.1'
+  gem 'spork', "0.9.0.rc9"
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'yard'
 end
 
 group :production do
