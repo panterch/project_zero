@@ -36,6 +36,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'haml-rails'
+  gem 'quiet_assets'
   gem 'rspec-rails', '2.8.1'
   gem 'spork', "0.9.0.rc9"
   gem 'sqlite3-ruby', :require => 'sqlite3'
